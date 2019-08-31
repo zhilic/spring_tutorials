@@ -3,7 +3,9 @@ This repository includes my codes when learning basic Spring concepts.
 
 Main source: https://www.udemy.com/spring-hibernate-tutorial/
 
-Libraries needed: Spring 5 .jar files downloaded at https://repo.spring.io/release/org/springframework/spring/
+Libraries needed: 
+- Spring 5 .jar files downloaded at https://repo.spring.io/release/org/springframework/spring/
+- javax.annotation (for Java 9 and higher) downloaded at http://central.maven.org/maven2/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.jar
 
 ## Spring Container
 **Spring container** is generically known as **_ApplicationContext_**. It's usually **_CONFIGURABLE_**.
@@ -27,7 +29,8 @@ Libraries needed: Spring 5 .jar files downloaded at https://repo.spring.io/relea
 	- **Autowiring** injection types: Constructor injection, Setter injection, Field injections
 	- Use `@Qualifier("the desired bean id")` to specify which bean to use if there are multiple beans to be autowired.
 	- *When using `@PostConstruct` and `@PreDestroy` in Java 9 and higher, you need additional javax.annotation lib to enable the annotation imports.*
-- Java Source Code (modern, no XML file)
+- [Java Source Code](./Configuration_with_Java_Source_Codes) (modern, no XML file)
+	- Add a configuration class in src directory
 
 
 ## Spring Bean
