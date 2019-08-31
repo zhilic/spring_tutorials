@@ -6,10 +6,40 @@
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Load the properties file: sport.properties -->
+	<context:property-placeholder location="classpath:sport.properties" />
 	
 	<!-- Define your beans here -->
+	
+	<!-- Define the dependency -->
+	<bean id="myFortune"
+		class="zhili.springdemo.XMLconfig.HappyFortuneService">
+	</bean>
+	
 	<bean id="myCoach"
 		class="zhili.springdemo.XMLconfig.FootballCoach">
+		<!-- Set up constructor injection -->
+		<constructor-arg ref="myFortune" />
+	</bean>
+	
+	<bean id="mySetterCoach"
+		class="zhili.springdemo.XMLconfig.CricketCoach">
+		<!-- Set up setter injection which will look up for the method "set" + property name -->	
+		<property name="fortuneService" ref="myFortune" />
+		
+		<!-- Inject literal values - hardcode the values in the "value" attribute  -->
+		<!-- Inject values from properties file -->
+		<property name="email" value="${foo.email}" />
+		<property name="team" value="${foo.team}" />
+	</bean>
+	
+	<bean id="myMethodCoach"
+		class="zhili.springdemo.XMLconfig.TennisCoach"
+		init-method="doMyInitStuff"
+		destroy-method="doMyDestroyStuff">
+
+		<constructor-arg ref="myFortune" />
 	</bean>
 
 </beans>
