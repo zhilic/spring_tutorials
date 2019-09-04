@@ -1,11 +1,7 @@
 # Spring Tutorials
 This repository includes my codes when learning basic Spring concepts.
 
-Main source: https://www.udemy.com/spring-hibernate-tutorial/
-
-Libraries needed: 
-- Spring 5 .jar files downloaded at https://repo.spring.io/release/org/springframework/spring/
-- javax.annotation (for Java 9 and higher) downloaded at http://central.maven.org/maven2/javax/annotation/javax.annotation-api/1.2/javax.annotation-api-1.2.jar
+Main reference: https://www.udemy.com/spring-hibernate-tutorial/
 
 ## Spring Container
 **Spring container** is generically known as **_ApplicationContext_**. It's usually **_CONFIGURABLE_**.
@@ -22,6 +18,11 @@ Libraries needed:
 			2. Load values from properties file
 
 2. Ways to configure Spring Container:
+
+	*Libraries needed for the example codes:*
+	- Spring 5 .jar files
+	- javax.annotation (for Java 9 and higher)
+
 - [XML configuration file](./Configuration_with_XML) (legacy, but most legacy apps still use this)
 - [Java Annotations](./Configuration_with_Annotations) (modern, minimize XML file)
 	- Default Bean ID is the class name with the first letter being lower-case. **_Special case_**: If both the first and second characters of the class name are upper case, the name is NOT converted.
@@ -54,3 +55,69 @@ Special note about init and destroy method signatures (`init-method` & `destroy-
 - The method can have any return type, but usually "void".
 - The method can have any method name.
 - The method can NOT accept any arguments.
+
+## Spring MVC (Model-View-Controller)
+
+> Spring Web MVC is the original web framework built on the **Servlet API** and has been included in the Spring Framework from the very beginning.
+
+> Spring MVC is designed around the front controller pattern where a central `Servlet`, the `DispatcherServlet`, provides a shared algorithm for request processing, while actual work is performed by configurable delegate components.
+
+(https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html)
+
+It is a **HTTP oriented** web application development framework.
+
+**Spring Model** is a container for your application data.
+- In **Controller**, you can put everything in the model.
+	`model.addAttributes('attributeName', attributeValue)`
+- Your **View** page can access data from the model via attribute names.
+
+`@RequestParam("studentName") String theName`: Spring will read the param *studentName* from request and bind it to the variable *theName* in the corresponding method.
+
+Use `modelAttribute` to bind form data in front-end file (.html or .jsp etc.), and `@modelAttribute` in controllers to use the data.
+
+**Form Validation**/**Bean Validation** Features: required, validate length, validate numbers, validate with regular expressions, custom validation. Validation Annotations: `@Valid` & new param`BindingResult` (in controller, `BindingResult` parameter must appear immediately after the model attribute), `@NotNull`, `Min`, `Max`, `Size`, `Pattern`, `@Future`/`@Past` etc.
+
+## Spring Boot
+
+> Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".
+(https://spring.io/projects/spring-boot)
+
+Spring Boot saves developers a lot of configurations which are requested in Spring MVC such as component scan, dispatcher servlet, a view resolver, web jars etc.
+
+Dependencies of Spring Boot Starter Web can be classified into:
+- Spring - core, beans, context, aop
+- Web MVC - Spring MVC
+- Jackson - for JSON Binding
+- Validation - Hibernate Validation, Validation API
+- Embedded Servlet Container - Tomcat
+- Logging - logback, slf4j
+
+
+## Hibernate
+
+*Requirements for the example codes:*
+
+1. MySQL server;
+2. Hibernate ORM jar files;
+3. MySQL-connector Java;
+
+**Hibernate** is a framework for persisting / saving Java objects in a database.
+
+Benefits of Hibernate:
+- Hibernate handles all of the low-level SQL
+- Minimizes the amount of JDBC code you have to develop
+- Hibernate provides the **Object-to-Relational Mapping (ORM)**
+
+Hibernate Development Process:
+1. Add Hibernate Configuration file ("hibernate.cfg.xml")
+	
+	Two options for mapping: (1) XML config file (legacy); (2) **Java Annotations** (modern, preferred)
+
+2. Annotate Java Class
+3. Develop Java Code to perform database operations
+
+**Entity Class**: Java class that is mapped to a database table.
+
+**SessionFactory**: Reads the hibernate config file; Creates Session objects; Heavy-weight object; Only create once in your app
+
+**Session**: Wraps a JDBC connection; Main object used to save/retrieve objects; Short-lived object; Retrieved from SessionFactory
