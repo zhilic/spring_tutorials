@@ -62,7 +62,7 @@ Special note about init and destroy method signatures (`init-method` & `destroy-
 
 > Spring MVC is designed around the front controller pattern where a central `Servlet`, the `DispatcherServlet`, provides a shared algorithm for request processing, while actual work is performed by configurable delegate components.
 
-(https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html)
+https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html
 
 It is a **HTTP oriented** web application development framework.
 
@@ -80,7 +80,7 @@ Use `modelAttribute` to bind form data in front-end file (.html or .jsp etc.), a
 ## Spring Boot
 
 > Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".
-(https://spring.io/projects/spring-boot)
+https://spring.io/projects/spring-boot
 
 Spring Boot saves developers a lot of configurations which are requested in Spring MVC such as component scan, dispatcher servlet, a view resolver, web jars etc.
 
@@ -101,6 +101,8 @@ Dependencies of Spring Boot Starter Web can be classified into:
 2. Hibernate ORM jar files;
 3. MySQL-connector Java;
 
+[Hibernate Basic CRUD Functions](./Hibernate_CRUD_Basics)
+
 **Hibernate** is a framework for persisting / saving Java objects in a database.
 
 Benefits of Hibernate:
@@ -116,8 +118,17 @@ Hibernate Development Process:
 2. Annotate Java Class
 3. Develop Java Code to perform database operations
 
-**Entity Class**: Java class that is mapped to a database table.
+**Entity**
+- Entity Class: Java class that is mapped to a database table.
+- Entity Lifecycle: Detach (from a Hibernate session), Merge (to a session), Persist (transitions new instances to managed state), Remove, Refresh
 
 **SessionFactory**: Reads the hibernate config file; Creates Session objects; Heavy-weight object; Only create once in your app
 
 **Session**: Wraps a JDBC connection; Main object used to save/retrieve objects; Short-lived object; Retrieved from SessionFactory
+
+[**Advanced Mapping**](./Hibernate_Advanced_Mapping):
+- One-to-One Mapping (uni-directional vs. bi-directional)
+- One-to-Many / Many-to-One Mapping
+- Many-to-Many Mapping
+
+*Lazy Loading* (load the main entity first and then load dependent entities on demand - preferred, require an open Hibernate session) vs. *Eager Loading*

@@ -22,7 +22,7 @@ public class ReadStudentDemo {
 		try {
 			// use the session object to save Java object
 			System.out.println("Creating new student object...");
-			Student tempStudent = new Student("Leon", "Kang", "leon@gamil.com");
+			Student tempStudent = new Student("Leon", "Kang", "leon@gmail.com");
 			System.out.println("Saving the student...");
 			session.beginTransaction();
 			session.save(tempStudent);
@@ -33,10 +33,16 @@ public class ReadStudentDemo {
 			// now get a new session and start transaction
 			session = factory.getCurrentSession();
 			session.beginTransaction();
+			
 			// retieve student based on the id: primary key
-			System.out.println("\Getting student with id: " + tempStudent.getId());
+			System.out.println("\nGetting student with id: " + tempStudent.getId());
+			Student myStudent = session.get(Student.class, tempStudent.getId());
+			System.out.println("Get complete: " + myStudent);
+			
 			// commit the transaction
+			session.getTransaction().commit();
 			System.out.println("Done!");
+			
 		} finally {
 			factory.close();
 		}
