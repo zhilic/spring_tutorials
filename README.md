@@ -92,6 +92,7 @@ Dependencies of Spring Boot Starter Web can be classified into:
 - Embedded Servlet Container - Tomcat
 - Logging - logback, slf4j
 
+Spring Boot apps can be run from the IDE or command-line (.jar file including the embedded Tomcat server); It can also be deployed as a **WAR** file in the traditionaly way to an external server (Tomcat, JBoss, WebSphere etc.)
 
 ## Hibernate
 
@@ -132,3 +133,34 @@ Hibernate Development Process:
 - Many-to-Many Mapping
 
 *Lazy Loading* (load the main entity first and then load dependent entities on demand - preferred, require an open Hibernate session) vs. *Eager Loading*
+
+## Aspect-Oriented Programming (AOP)
+
+**Advantages** of AOP:
+- Reusable modules
+- Resolve code tangling
+- Resolve code scatter
+- Applied selectively based on configuration
+
+**Disadvantages** of AOP:
+- Too many aspects and app flow is hard to follow
+- Minor performance cost for aspect execution (run-time weaving)
+
+Some Terminologies:
+- **Aspect**: An aspect can be reused at multiple locations; same as class, can be applied based on configuration. It is a module of code for a cross-cutting concern (i.e. logging, security ...)
+- **Advice**: What action is taken and when it should be applied. Types: *Before advice*, *After finally advice*, *After returning advice*, *After throwing advice*, *Around advice*
+- **Joint Point**: When to apply code during program execution
+- **Pointcut**: A predicate expression for where advice should be applied.
+- **Weaving**: Connecting aspects to target objects to create an advised object. Types: compile-time, load-time, run-time (slowest)
+
+|**Spring AOP**|**AspectJ**|
+|:-------------|:----------|
+|Provided by Spring|Original AOP framework|
+|Provide support for key Spring components:<br> Security, transactions, caching etc.|Provide complete support for AOP|
+|Run-time weaving of aspects (slower than AspectJ)|Rich support for join points & code weaving|
+
+## Maven
+
+## Spring Security
+
+
