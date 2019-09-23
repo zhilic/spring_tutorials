@@ -94,6 +94,22 @@ Dependencies of Spring Boot Starter Web can be classified into:
 
 Spring Boot apps can be run from the IDE or command-line (.jar file including the embedded Tomcat server); It can also be deployed as a **WAR** file in the traditionaly way to an external server (Tomcat, JBoss, WebSphere etc.)
 
+**Application Properties** file
+- By default located at *src/main/resources/applcation.properties*
+- Can define ANY custom properties in this file
+- Spring Boot app can access properties using `@Value`
+
+Some Useful Tools:
+- **spring-boot-starter-\***: No need to list version for these dependencies. They inherit version from the Starter Parent.
+- **spring-boot-devtools**: Automatically restarts your application when code is updated.
+- **spring-boot-(starter-)actuator**: Expose endpoints to *monitor* and *manage* your application. Endpoints are prefixed with "/actuator"
+	- "/health": Health info about your application
+	- "/info": Info about your project
+	- "/auditevents": Audit events for your application
+	- "/beans": List of all beans registered in the Spring application context
+	- "/mappings": List of all @RequestMapping paths
+	- etc.
+
 ## Hibernate
 
 *Requirements for the example codes:*
