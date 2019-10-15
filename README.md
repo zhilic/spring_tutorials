@@ -184,7 +184,9 @@ Some Terminologies:
 
 [A simple demo with hard coded data](./Spring_Security_Demo)
 
-The example needs to connect Tomcat to Java IDE (Eclipse / STS in my case)
+[A simple demo with JDBC connection](./Spring_Security_with_JDBC)
+
+The examples need to connect Tomcat to Java IDE (Eclipse / STS in my case)
 
 Spring Security defines a framework for security, which is implemented using Servlet filters (pre-process / post-process web requests) in the background.
 
