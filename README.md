@@ -180,7 +180,9 @@ Some Terminologies:
 |Run-time weaving of aspects (slower than AspectJ)|Rich support for join points & code weaving|
 
 
-## [Spring Security](./Spring_Security_Demo)
+## Spring Security
+
+[A simple demo with hard coded data](./Spring_Security_Demo)
 
 The example needs to connect Tomcat to Java IDE (Eclipse / STS in my case)
 
