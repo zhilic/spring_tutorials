@@ -30,3 +30,9 @@ hs_err_pid*
 .classpath
 
 */bin/
+
+# Ignore the output class files from InteliJ
+**/out/
+
+# Ignore the personal IDE configuration files from InteliJ
+**/.idea/

@@ -120,7 +120,11 @@ Some Useful Tools:
 
 [Hibernate Basic CRUD Functions](./Hibernate_CRUD_Basics)
 
-**Hibernate** is a framework for persisting / saving Java objects in a database.
+**Hibernate** is a framework for persisting / saving Java objects in a database, an *Object-Relational Mapping* tool.
+
+**Hibernate vs. Spring Data JPA**
+- **JPA**: Java Persistence API
+- JPA is a specification. Hibernate is a SPA provider or implementation, while Spring Data JPA is a library/framework (JPA Data Access Abstraction) that adds an extra layer of abstraction on top of JPA provider (like Hibernate).
 
 Benefits of Hibernate:
 - Hibernate handles all of the low-level SQL
@@ -175,8 +179,31 @@ Some Terminologies:
 |Provide support for key Spring components:<br> Security, transactions, caching etc.|Provide complete support for AOP|
 |Run-time weaving of aspects (slower than AspectJ)|Rich support for join points & code weaving|
 
+
+## [Spring Security](./Spring_Security_Demo)
+
+The example needs to connect Tomcat to Java IDE (Eclipse / STS in my case)
+
+Spring Security defines a framework for security, which is implemented using Servlet filters (pre-process / post-process web requests) in the background.
+
+Two methods of securing a Web app:
+- declarative
+- programmatic
+
+**Security Concepts**:
+- Authenication: check user id and password with credentials stored in app/db
+- Authorization: check to see if user has an authorized role
+
+Spring Security protects against **Cross-Site Request Forgery (CSRF)**.
+- CSRF: A type of malicious exploit of a website where unauthorized commands are transmitted from a user that the web application trusts.
+- Spring Security uses the Synchronizer Token Pattern
+	- Each request includes a session cookie and randomly generated token.
+	- Spring Security verifies the token before request processing.
+	- The Spring MVC tag `<form:form>` automatically adds CSRF token; if you don't use `<form:form>`, you must manually add CSRF token.
+
+**Some tips**:
+- Need to find *compatible versions* between Spring Security and Spring Framework.
+- Spring Security provides a default login page.
+
+
 ## Maven
-
-## Spring Security
-
-
